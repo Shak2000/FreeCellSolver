@@ -315,7 +315,7 @@ class MCTSNode:
 
     def simulate(self):
         current_game = copy.deepcopy(self.game_state)
-        max_moves = 20
+        max_moves = 10
         for _ in range(max_moves):
             if current_game.is_game_won():
                 return True
