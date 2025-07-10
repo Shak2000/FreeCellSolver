@@ -1,0 +1,126 @@
+/* Custom CSS for FreeCell Cards and Layout */
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    width: 70px; /* Standard card width */
+    height: 95px; /* Standard card height */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    user-select: none; /* Prevent text selection on cards */
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card.selected-card {
+    border: 3px solid #3b82f6; /* Blue border for selected card */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    transform: scale(1.05);
+}
+
+.card-rank {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.card-suit {
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+/* Suit Colors */
+.suit-red {
+    color: #ef4444; /* Tailwind red-500 */
+}
+
+.suit-black {
+    color: #1f2937; /* Tailwind gray-800 */
+}
+
+/* Column styling */
+.column {
+    background-color: #e2e8f0; /* Tailwind gray-200 */
+    border-radius: 8px;
+    padding: 8px;
+    min-height: 250px; /* Ensure columns have some height even when empty */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #cbd5e1; /* Tailwind gray-300 */
+    transition: background-color 0.1s ease-in-out;
+}
+
+.column.empty-column {
+    border-style: dashed;
+    border-color: #94a3b8; /* Tailwind slate-400 */
+    background-color: #f1f5f9; /* Tailwind slate-100 */
+}
+
+.column.empty-column:hover {
+    background-color: #e2e8f0; /* Tailwind gray-200 */
+}
+
+.column-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #475569; /* Tailwind slate-600 */
+}
+
+/* Free/Home Cells specific styling */
+#free-cells, #home-cells {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.empty-slot {
+    width: 70px;
+    height: 95px;
+    border: 1px dashed #94a3b8; /* Tailwind slate-400 */
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #94a3b8;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.empty-slot:hover {
+    background-color: rgba(148, 163, 184, 0.1); /* Light hover effect */
+}
+
+/* General button styling */
+.action-btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
