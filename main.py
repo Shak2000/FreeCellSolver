@@ -41,7 +41,7 @@ class Game:
             return 1
         return ord(card[0]) - 48
 
-    def move_cascade(self, src, dst):
+    def move_column(self, src, dst):
         if (self.red(self.table[src][-1]) == self.red(self.table[dst][-1])
                 or self.value(self.table[src][-1]) + 1 != self.value(self.table[dst][-1])):
             return False
@@ -64,11 +64,19 @@ class Game:
         self.expand_history()
         return True
 
-    def go_home(self, src, dst):
+    def column_to_home(self, src, dst):
         if (self.table[src][-1][1] != self.home[dst][-1][1]
                 or self.value(self.table[src][-1]) != self.value(self.home[dst][-1]) + 1):
             return False
         self.home[dst].append(self.table[src].pop())
+        self.expand_history()
+        return True
+
+    def free_to_home(self, src, dst):
+        if (self.free[src][1] != self.home[dst][-1][1]
+                or self.value(self.free[src]) != self.value(self.home[dst][-1]) + 1):
+            return False
+        self.home[dst].append(self.free.pop(src))
         self.expand_history()
         return True
 
