@@ -284,6 +284,10 @@ class Game:
                     best_win_rate = win_rate
                     best_move = child.move
 
+        # Apply the best move to the current game instance
+        if best_move:
+            self.apply_move(self, best_move)
+
         return best_move
 
 
@@ -315,7 +319,7 @@ class MCTSNode:
 
     def simulate(self):
         current_game = copy.deepcopy(self.game_state)
-        max_moves = 10
+        max_moves = 40  # Changed from 500 to 40
         for _ in range(max_moves):
             if current_game.is_game_won():
                 return True
@@ -454,7 +458,7 @@ def main():
                     best_move = game.computer_play(simulations=100)
                     if best_move:
                         print(f"Computer decided to make move: {best_move}")
-                        game.apply_move(game, best_move)
+                        # The computer_play method now applies the move internally
                         print("Computer move executed!")
                     else:
                         print("Computer could not find a valid move or game is stuck.")
